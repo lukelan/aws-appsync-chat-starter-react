@@ -29,7 +29,8 @@
     "react-tiny-popover": "^4.0.0",
     "reactstrap": "^8.4.1",
     "rxjs": "^6.5.4",
-    "uuid": "^7.0.2"
+    "uuid": "^7.0.2",
+    "lodash": "^4.17.21"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
