@@ -14,7 +14,7 @@ type Conversation
 
 type Message
   @searchable
-  @auth(rules: [{ allow: owner, mutations: [create] }])
+  @auth(rules: [{ allow: owner, operations: [create] }])
   @model(
     mutations: { create: "createMessage" }
     queries: null
