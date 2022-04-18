@@ -23,7 +23,7 @@ Resources:
     Type: "AWS::Serverless::Function"
     Properties:
       Handler: ai-lambda/index.handler
-      Runtime: nodejs10.x
+      Runtime: nodejs14.x
       CodeUri: .
       Description: ""
       MemorySize: 1024
@@ -50,7 +50,7 @@ Resources:
     Type: 'AWS::Serverless::Function'
     Properties:
       Handler: chuckbot-lambda/index.lambda_handler
-      Runtime: nodejs10.x
+      Runtime: nodejs14.x
       CodeUri: .
       Description: ''
       MemorySize: 128
