@@ -14,7 +14,7 @@ type Conversation
 
 type Message
   @searchable
-  @auth(rules: [{ allow: owner, identityField: "sub", mutations: [create] }])
+  @auth(rules: [{ allow: owner, identityClaim: "sub", mutations: [create] }])
   @model(
     mutations: { create: "createMessage" }
     queries: null
@@ -41,7 +41,7 @@ type S3Object {
 
 type User
   @searchable
-  @auth(rules: [{ allow: owner, identityField: "sub" }])
+  @auth(rules: [{ allow: owner, identityClaim: "sub" }])
   @model(
     mutations: { create: "registerUser" }
     queries: { get: "getUser" }
