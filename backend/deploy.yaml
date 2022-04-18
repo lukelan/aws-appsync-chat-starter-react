@@ -41,7 +41,7 @@ Resources:
     Type: "AWS::Serverless::Function"
     Properties:
       Handler: moviebot-lambda/index.handler
-      Runtime: nodejs10.x
+      Runtime: nodejs14.x
       CodeUri: .
       Description: ""
       MemorySize: 128
