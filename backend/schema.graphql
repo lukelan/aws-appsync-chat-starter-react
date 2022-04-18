@@ -8,8 +8,8 @@ type Conversation
   name: String!
   createdAt: String
   # Messages in this conversation
-  messages: [Message] @connection(name: "ConvoMsgs", sortField: "createdAt")
-  associated: [ConvoLink] @connection(name: "associatedLinks")
+  messages: [Message] @hasMany(name: "ConvoMsgs", sortField: "createdAt")
+  associated: [ConvoLink] @hasMany(name: "associatedLinks")
 }
 
 type Message
@@ -30,7 +30,7 @@ type Message
   file: S3Object
   messageConversationId: ID
   # The conversation this message belongs to
-  conversation: Conversation @connection(name: "ConvoMsgs")
+  conversation: Conversation @belongsTo(name: "ConvoMsgs")
 }
 
 type S3Object {
@@ -52,7 +52,7 @@ type User
   # is the user registered?
   registered: Boolean
   # the user's conversations
-  userConversations: [ConvoLink] @connection(name: "UserLinks")
+  userConversations: [ConvoLink] @hasMany(name: "UserLinks")
 }
 
 type ConvoLink
@@ -66,8 +66,8 @@ type ConvoLink
   name: String
   status: String
   convoLinkUserId: ID
-  user: User @connection(name: "UserLinks")
-  conversation: Conversation @connection(name: "associatedLinks")
+  user: User @ belongsTo(name: "UserLinks")
+  conversation: Conversation @belongsTo(name: "associatedLinks")
 }
 
 type AI {
