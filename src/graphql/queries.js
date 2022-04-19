@@ -177,6 +177,14 @@ export const searchMessages = gql`
           id
           username
           registered
+          userConversations {
+            items {
+             id
+             name
+             status
+             convoLinkUserId
+            }
+            nextToken
         }
         nextToken
       }
