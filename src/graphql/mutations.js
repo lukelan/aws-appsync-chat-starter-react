@@ -18,6 +18,30 @@ export const createConvo = gql`
     }
   }
 `
+// export const createMessage = gql`
+//   mutation CreateMessage($input: CreateMessageInput!) {
+//     createMessage(input: $input) {
+//       id
+//       content
+//       createdAt
+//       owner
+//       chatbot
+//       isSent
+//       file {
+//         bucket
+//         region
+//         key
+//       }
+//       messageConversationId
+//       conversation {
+//         id
+//         name
+//         createdAt
+//       }
+//     }
+//   }
+// `
+
 export const createMessage = gql`
   mutation CreateMessage($input: CreateMessageInput!) {
     createMessage(input: $input) {
@@ -27,11 +51,6 @@ export const createMessage = gql`
       owner
       chatbot
       isSent
-      file {
-        bucket
-        region
-        key
-      }
       messageConversationId
       conversation {
         id
@@ -41,6 +60,7 @@ export const createMessage = gql`
     }
   }
 `
+
 export const registerUser = gql`
   mutation RegisterUser($input: CreateUserInput!) {
     registerUser(input: $input) {
