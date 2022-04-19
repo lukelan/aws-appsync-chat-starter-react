@@ -185,6 +185,7 @@ export const searchMessages = gql`
              convoLinkUserId
             }
             nextToken
+          }
         }
         nextToken
       }
