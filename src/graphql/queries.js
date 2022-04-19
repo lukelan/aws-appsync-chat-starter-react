@@ -61,6 +61,37 @@ export const getConvo = gql`
   }
 `
 
+export const searchMessages = gql`
+  query SearchMessages(
+    $filter: SearchableMessageFilterInput
+    $sort: SearchableMessageSortInput
+    $limit: Int
+    $nextToken: Int
+  ) {
+    searchMessages(
+      filter: $filter
+      sort: $sort
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        content
+        createdAt
+        owner
+        chatbot
+        isSent
+        messageConversationId
+        conversation {
+          id
+          name
+          createdAt
+        }
+      }
+      nextToken
+    }
+  }
+`
 // export const searchMessages = gql`
 //   query SearchMessages(
 //     $filter: SearchableMessageFilterInput
@@ -87,47 +118,11 @@ export const getConvo = gql`
 //           key
 //         }
 //         messageConversationId
-//         conversation {
-//           id
-//           name
-//           createdAt
-//         }
 //       }
 //       nextToken
 //     }
 //   }
 // `
-export const searchMessages = gql`
-  query SearchMessages(
-    $filter: SearchableMessageFilterInput
-    $sort: SearchableMessageSortInput
-    $limit: Int
-    $nextToken: Int
-  ) {
-    searchMessages(
-      filter: $filter
-      sort: $sort
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        content
-        createdAt
-        owner
-        chatbot
-        isSent
-        file {
-          bucket
-          region
-          key
-        }
-        messageConversationId
-      }
-      nextToken
-    }
-  }
-`
 // export const searchUsers = gql`
 //   query SearchUsers(
 //     $filter: SearchableUserFilterInput
