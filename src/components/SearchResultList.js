@@ -218,16 +218,16 @@ function buildMsgFilter(term, conversations = {}) {
 }
 
 const SearchResultListWithData = compose(
-  graphql(searchUsers, {
-    name: 'userSearchData',
-    skip: props => !props.term,
-    options: props => ({
-      variables: {
-        filter: { username: { regexp: `.*${props.term}.*` } }
-      },
-      fetchPolicy: 'cache-and-network'
-    })
-  }),
+  // graphql(searchUsers, {
+  //   name: 'userSearchData',
+  //   skip: props => !props.term,
+  //   options: props => ({
+  //     variables: {
+  //       filter: { username: { regexp: `.*${props.term}.*` } }
+  //     },
+  //     fetchPolicy: 'cache-and-network'
+  //   })
+  // }),
   graphql(searchMessages, {
     name: 'msgSearchData',
     skip: props =>
