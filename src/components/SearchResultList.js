@@ -228,17 +228,17 @@ const SearchResultListWithData = compose(
   //     fetchPolicy: 'cache-and-network'
   //   })
   // }),
-  graphql(searchMessages, {
-    name: 'msgSearchData',
-    skip: props =>
-      !props.term || !props.conversations || !props.conversations.items.length,
-    options: props => ({
-      variables: {
-        filter: buildMsgFilter(props.term, props.conversations)
-      },
-      fetchPolicy: 'cache-and-network'
-    })
-  })
+  // graphql(searchMessages, {
+  //   name: 'msgSearchData',
+  //   skip: props =>
+  //     !props.term || !props.conversations || !props.conversations.items.length,
+  //   options: props => ({
+  //     variables: {
+  //       filter: buildMsgFilter(props.term, props.conversations)
+  //     },
+  //     fetchPolicy: 'cache-and-network'
+  //   })
+  // })
 )(SearchResultList)
 
 export default SearchResultList
