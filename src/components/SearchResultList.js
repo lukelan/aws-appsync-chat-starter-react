@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { searchMessages, searchUsers } from '../graphql/queries'
+import searchMessages from '../graphql/queries'
+import searchUsers from '../graphql/queries'
 import { graphql } from 'react-apollo'
 import {flowRight as compose} from 'lodash';
 import BarLoader from 'react-spinners/BarLoader'
@@ -218,27 +219,27 @@ function buildMsgFilter(term, conversations = {}) {
 }
 
 const SearchResultListWithData = compose(
-  // graphql(searchUsers, {
-  //   name: 'userSearchData',
-  //   skip: props => !props.term,
-  //   options: props => ({
-  //     variables: {
-  //       filter: { username: { regexp: `.*${props.term}.*` } }
-  //     },
-  //     fetchPolicy: 'cache-and-network'
-  //   })
-  // }),
-  // graphql(searchMessages, {
-  //   name: 'msgSearchData',
-  //   skip: props =>
-  //     !props.term || !props.conversations || !props.conversations.items.length,
-  //   options: props => ({
-  //     variables: {
-  //       filter: buildMsgFilter(props.term, props.conversations)
-  //     },
-  //     fetchPolicy: 'cache-and-network'
-  //   })
-  // })
+  graphql(searchUsers, {
+    name: 'userSearchData',
+    skip: props => !props.term,
+    options: props => ({
+      variables: {
+        filter: { username: { regexp: `.*${props.term}.*` } }
+      },
+      fetchPolicy: 'cache-and-network'
+    })
+  }),
+  graphql(searchMessages, {
+    name: 'msgSearchData',
+    skip: props =>
+      !props.term || !props.conversations || !props.conversations.items.length,
+    options: props => ({
+      variables: {
+        filter: buildMsgFilter(props.term, props.conversations)
+      },
+      fetchPolicy: 'cache-and-network'
+    })
+  })
 )(SearchResultList)
 
 export default SearchResultList
