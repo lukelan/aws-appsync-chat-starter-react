@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import searchMessages from '../graphql/queries'
-import searchUsers from '../graphql/queries'
+import { searchMessages, searchUsers } from '../graphql/queries'
 import { graphql } from 'react-apollo'
 import {flowRight as compose} from 'lodash';
 import BarLoader from 'react-spinners/BarLoader'
