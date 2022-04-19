@@ -128,37 +128,60 @@ export const searchMessages = gql`
     }
   }
 `
-export const searchUsers = gql`
-  query SearchUsers(
-    $filter: SearchableUserFilterInput
-    $sort: SearchableUserSortInput
-    $limit: Int
-    $nextToken: Int
-  ) {
-    searchUsers(
-      filter: $filter
-      sort: $sort
-      limit: $limit
-      nextToken: $nextToken
+// export const searchUsers = gql`
+//   query SearchUsers(
+//     $filter: SearchableUserFilterInput
+//     $sort: SearchableUserSortInput
+//     $limit: Int
+//     $nextToken: Int
+//   ) {
+//     searchUsers(
+//       filter: $filter
+//       sort: $sort
+//       limit: $limit
+//       nextToken: $nextToken
+//     ) {
+//       items {
+//         id
+//         username
+//         registered
+//         userConversations {
+//           items {
+//             id
+//             name
+//             status
+//             convoLinkUserId
+//           }
+//           nextToken
+//         }
+//       }
+//       nextToken
+//     }
+//   }
+// `
+
+  export const searchUsers = gql`
+    query SearchUsers(
+      $filter: SearchableUserFilterInput
+      $sort: SearchableUserSortInput
+      $limit: Int
+      $nextToken: Int
     ) {
-      items {
-        id
-        username
-        registered
-        userConversations {
-          items {
-            id
-            name
-            status
-            convoLinkUserId
-          }
-          nextToken
+      searchUsers(
+        filter: $filter
+        sort: $sort
+        limit: $limit
+        nextToken: $nextToken
+      ) {
+        items {
+          id
+          username
+          registered
         }
+        nextToken
       }
-      nextToken
     }
-  }
-`
+  `
 
 export const searchConvoLinks = gql`
   query SearchConvoLinks(
