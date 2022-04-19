@@ -34,7 +34,7 @@ const SearchResultList = ({
 
   const data = { users, messages }
 
-  // console.log(JSON.stringify(data, null, 2))
+  console.log(JSON.stringify(data, null, 2))
   const convoMap = conversations.items.reduce((acc, cur) => {
     acc[cur.conversation.id] = cur.name
     return acc
